@@ -60,8 +60,20 @@ struct EmployeeNode* searchEmployee(struct EmployeeNode* employee, char name[]) 
 }
 
 int main() {
-    struct EmployeeNode* ceo = NULL;
+    struct EmployeeNode* ceo = createEmployeeNode("Mateus", "ceo");
 
+    // Funcionários adicionais
+    struct EmployeeNode* manager1 = createEmployeeNode("Otto", "gerente");
+    struct EmployeeNode* manager2 = createEmployeeNode("Paula", "gerente");
+    struct EmployeeNode* employee1 = createEmployeeNode("Maria", "funcionario");
+    struct EmployeeNode* employee2 = createEmployeeNode("Jorge", "funcionario");
+
+    addSubordinate(ceo, manager1);
+    addSubordinate(ceo, manager2);
+    addSubordinate(manager1, employee1);
+    addSubordinate(manager2, employee2);
+
+    printOrganization(ceo, 0);
     int choice = 0;
     while (choice != -1) {
         printf("\nMenu:\n");
