@@ -77,17 +77,17 @@ int main() {
     int choice = 0;
     while (choice != -1) {
         printf("\nMenu:\n");
-        printf("1. Adicionar funcionário\n");
+        printf("1. Adicionar funcionario\n");
         printf("2. Encerrar o programa\n");
         printf("3. Exibir funcionarios\n");
-        printf("Escolha uma opção: ");
+        printf("Escolha uma opcao: ");
         scanf("%d%*c", &choice);
 
         if (choice == 1) {
             char name[50];
             char cargo[50];
                
-            printf("Digite o nome do funcionário: ");
+            printf("Digite o nome do funcionario: ");
             fgets(name, 50, stdin);
             
             // tirar o \n no final 
@@ -109,21 +109,21 @@ int main() {
                 printf("CEO adicionado com sucesso!\n");
             } else {
                 char managerName[50];
-                printf("Escolha o gerente (ou superior) para o funcionário (Digite o nome): ");
+                printf("Escolha o gerente (ou superior) para o funcionario (Digite o nome): ");
                 fgets(managerName, 50, stdin);
                 length = strlen(managerName);
                 if (managerName[length - 1] == '\n') {
                     managerName[length - 1] = '\0';
                 }
 
-                // Procurar o gerente na organização existente
+                // Procurar o gerente na organizacao existente
                 struct EmployeeNode* manager = searchEmployee(ceo, managerName);
 
                 if (manager != NULL) {
                     addSubordinate(manager, newEmployee);
-                    printf("Funcionário adicionado com sucesso!\n");
+                    printf("Funcionario adicionado com sucesso!\n");
                 } else {
-                    printf("Gerente não encontrado. O funcionário não foi adicionado.\n");
+                    printf("Gerente nao encontrado. O funcionario nao foi adicionado.\n");
                     free(newEmployee);  // Liberar a memória alocada para o novo funcionário
                 }
             }
@@ -135,19 +135,19 @@ int main() {
     }
 
     // Impressão da organização hierárquica dos empregados
-    printf("\nOrganização Hierárquica de Empregados:\n");
+    printf("\nOrganizacao Hierarquica de Empregados:\n");
     if (ceo != NULL) {
         printOrganization(ceo, 0);
     } else {
-        printf("Nenhum funcionário adicionado.\n");
+        printf("Nenhum funcionario adicionado.\n");
     }
 
     // Impressão da árvore hierárquica de funcionários
-    printf("\nÁrvore Hierárquica de Funcionários:\n");
+    printf("\narvore Hierarquica de Funcionarios:\n");
     if (ceo != NULL) {
         printOrganization(ceo, 0);
     } else {
-        printf("Nenhum funcionário adicionado.\n");
+        printf("Nenhum funcionario adicionado.\n");
     }
 
     return 0;
